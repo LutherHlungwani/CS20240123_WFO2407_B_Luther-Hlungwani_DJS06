@@ -22,7 +22,7 @@ console.log(
   products
   .filter(product => product.price && !isNaN(product.price))
   .map(product => Number(product.price))
-  .reduce((total, price) => toal + price, 0)
+  .reduce((total, price) => total + price, 0)
 );
 
 console.log(product.reduce((acc, product) => acc + product.product, ''));
@@ -37,11 +37,12 @@ console.log(
       lowest: Math.min(acc.lowest, product.price)
     }),
     { highest: -Infinity, lowest: Infinity}
-  )
-)
+  ),
+  ({highest, lowest}) => `Highest: ${highest}. Lowest: ${lowest}.`
+);
 
 console.log(
-  Object.entries(products).reduce((acc, [_, {product, price}]) =>{
+  products.reduce((acc, [ {product, price}]) =>{
     acc.push({name: product, cost: price});
     return acc;
   }, [])
